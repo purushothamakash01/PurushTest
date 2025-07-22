@@ -24,4 +24,13 @@ def test_enoNoForUniqueValueCheck():
     deptNoUniqueValueCount = len(target_df['eno'].unique())
     assert totalcount == deptNoUniqueValueCount, "eno column values are not unique - please check"
 
+    missing_ids = set(source_incremental['id']) - set(target_incremental['id'])
+
+    if not missing_ids:
+        print("✅ All new records inserted")
+    else:
+        print("❌ Missing records in target:", missing_ids)
+
+
+
 
